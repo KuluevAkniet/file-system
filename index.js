@@ -5,13 +5,13 @@ const morgan = require('morgan');
 const bodyParser = require('body-parser');
 require('dotenv').config();
 
-// Get MongoDB driver connection
 const dbo = require('./database/connect.db');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// middlewares
+
+
 app.use(fileUpload({
   createParentPath: true
 }))
@@ -24,7 +24,7 @@ app.use(express.json());
 app.use(express.static('static'));
 
 
-// routes
+
 app.use('/file', fileRoutes);
 app.get('/', (req, res) => {
   try {
@@ -46,7 +46,7 @@ dbo.connectToServer((err) => {
     process.exit();
   }
   
-  // Start the Express server
+  
   app.listen(PORT, () => {
     console.log(`App is listening on port ${PORT}`);
   });

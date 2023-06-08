@@ -4,7 +4,7 @@ class FileRepository {
     
     constructor() {};
     
-    async findFile(filename) {
+    async FindFile(filename) {
         const dbConnect = dbo.getDb();
         const result = await dbConnect
             .collection("file-service")
@@ -12,7 +12,7 @@ class FileRepository {
         return result;
     }
     
-    async findAllFiles() {
+    async FindAllFiles() {
         const dbConnect = dbo.getDb();
         const result = await dbConnect
             .collection("file-service")
@@ -20,7 +20,7 @@ class FileRepository {
         return result;
     }
     
-    async insertFile(newFile) {
+    async InsertFile(newFile) {
         const dbConnect = dbo.getDb();
         const result = await dbConnect
             .collection("file-service")
@@ -28,7 +28,7 @@ class FileRepository {
         return result;
     }
     
-    async updateFile(filename, newFile) {
+    async UpdateFile(filename, newFile) {
         const dbConnect = dbo.getDb();
         const result = await dbConnect
             .collection("file-service")
@@ -41,7 +41,7 @@ class FileRepository {
         return result;
     }
     
-    async deleteFiles(filename) {
+    async DeleteFiles(filename) {
         const dbConnect = dbo.getDb();
         const result = await dbConnect
             .collection("file-service")

@@ -5,13 +5,13 @@ class FileService {
     constructor() {
     }
     
-    async getAllFiles() {
+    async GetAllFiles() {
         const result = await fileRepository.findAllFiles();
         console.log("getAllFiles", result);
         return result;
     }
     
-    async getFile(filename) {
+    async GetFile(filename) {
         try {
             const result = await fileRepository.findFile(filename);
             if(result) {
@@ -23,7 +23,7 @@ class FileService {
         }
     }
     
-    async postFile(data) {
+    async PostFile(data) {
         try {
             const result = await writeFile(data.fileName, data.buffer);
             console.log('result writeStream: ', result);
@@ -44,7 +44,7 @@ class FileService {
         return await fileRepository.insertFile(newFile);
     }
     
-    async deleteFiles(query) {
+    async DeleteFiles(query) {
         if(query.filename) {
             const filename = query.filename;
             return await fileRepository.deleteFiles(filename);

@@ -3,7 +3,7 @@ const fileService = require('../services/file.service');
 class FileController {
   constructor() {}
   
-  async getAllFilesFromMongo(req, res) {
+  async GetAllFilesFromMongo(req, res) {
     try {
       const result = await fileService.getAllFiles();
       res.send(result);
@@ -12,7 +12,7 @@ class FileController {
     }
   }
   
-  async getFile(req, res, next) {
+  async GetFile(req, res, next) {
     try {
       const result = await fileService.getFile(req.params.filename);
       if(result) {
@@ -25,7 +25,7 @@ class FileController {
     }
   }
   
-  async postFile(req, res) {
+  async PostFile(req, res) {
     try {
       const data = { ...req.files };
       console.log("data", data);
@@ -36,7 +36,7 @@ class FileController {
     }
   }
   
-  async deleteFiles(req, res) {
+  async DeleteFiles(req, res) {
     try {
       const result = await fileService.deleteFiles(req.query);
       res.send(result);
