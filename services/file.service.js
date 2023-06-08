@@ -1,4 +1,4 @@
-const fileRepository = require('../repositories/file.repository');
+const fileRepository = require('../repository/file.repository');
 const { readFile, writeFile } = require('../lib/adapter');
 
 class FileService {

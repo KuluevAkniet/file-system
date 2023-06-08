@@ -1,8 +1,8 @@
 const express = require("express");
 const router = express.Router();
-const fileController = require("../controllers/file.controller");
+const fileController = require("../controller/file.controller");
 
-const buffer = require('../middlewares/buffer.middleware')
+const buffer = require('../middleware/buffer.middleware')
 
 router.get("/:filename", fileController.GetFile);
 router.post("/:filename", buffer, fileController.PostFile);
