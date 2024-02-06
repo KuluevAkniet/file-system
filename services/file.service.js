@@ -6,18 +6,18 @@ class FileService {
     }
     
     async GetAllFiles() {
-        const result = await fileRepository.findAllFiles();
+        const result = await fileRepository.FindAllFiles();
         console.log("getAllFiles", result);
         return result;
     }
     
     async GetFile(filename) {
         try {
-            const result = await fileRepository.findFile(filename);
-            if(result) {
-                return await readFile(filename);
-            }
-            return null;
+            const result = await fileRepository.FindFile(filename);
+            // if(result) {
+            //     return await readFile(filename);
+            // }
+            return result;
         } catch(e) {
             throw new Error("Error while getting file");
         }
@@ -36,18 +36,18 @@ class FileService {
             size: data.size
         }
         
-        const fileAlreadyExists = await fileRepository.findFile(data.fileName);
+        const fileAlreadyExists = await fileRepository.FindFile(data.fileName);
         
         if(fileAlreadyExists?.filename) {
-            return await fileRepository.updateFile(data?.fileName, newFile);
+            return await fileRepository.UpdateFile(data?.fileName, newFile);
         }
-        return await fileRepository.insertFile(newFile);
+        return await fileRepository.InsertFile(newFile);
     }
     
     async DeleteFiles(query) {
         if(query.filename) {
             const filename = query.filename;
-            return await fileRepository.deleteFiles(filename);
+            return await fileRepository.DeleteFiles(filename);
         }
         return `Provide filename`;
     }

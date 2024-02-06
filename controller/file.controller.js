@@ -5,7 +5,7 @@ class FileController {
   
   async GetAllFilesFromMongo(req, res) {
     try {
-      const result = await fileService.getAllFiles();
+      const result = await fileService.GetAllFiles();
       res.send(result);
     } catch(e) {
       res.status(500).json(e);
@@ -14,7 +14,7 @@ class FileController {
   
   async GetFile(req, res, next) {
     try {
-      const result = await fileService.getFile(req.params.filename);
+      const result = await fileService.GetFile(req.params.filename);
       if(result) {
         return result.pipe(res);
       }
@@ -29,7 +29,7 @@ class FileController {
     try {
       const data = { ...req.files };
       console.log("data", data);
-      const result = await fileService.postFile(data);
+      const result = await fileService.PostFile(data);
       return res.send(result);
     } catch(e) {
       res.status(500).json(e);
